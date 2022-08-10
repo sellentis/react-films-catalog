@@ -1,0 +1,57 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.App {
+
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+.movies {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
+.movies__item {
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.movies__item:hover {
+    box-shadow: 1px 0px 15px rgba(0,0,0, 0.2);
+}
+.movies__item-footer {
+    padding: 10px;
+}
+.movies__item-title {
+    font-size: 18px;
+    line-height: 20px;
+}
+.movies__item-img {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+}
+.filter {
+    padding-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.filter button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 1px solid darkslateblue;
+    border-radius: 100vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.filter button:hover {
+    box-shadow: 0px 0px 15px rgba(0,0,0, 0.3);
+}
+.filter button.active {
+    background: darkslateblue;
+    color: #fff;
+}
