@@ -1,0 +1,20 @@
+@import "utils/breakpoints";
+@import "utils/colors";
+@import "utils/mixins";
+@import "utils/helpers";
+
+@import "base/reset";
+@import "base/typography";
+
+@import "components/buttons";
+@import "components/header";
+@import "components/footer";
+@import "components/slider";
+
+@import "pages/main";
+@import "pages/catalog";
+@import "pages/search";
+
+body {
+  background: $clMainBlack;
+}

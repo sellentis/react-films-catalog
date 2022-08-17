@@ -1,0 +1,22 @@
+.slider {
+  .slider__slide {
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+  }
+  &__title {
+    font-size: 50px;
+    line-height: 60px;
+    color: #ffffff;
+    display: inline-block;
+    background: rgba($clBlue, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    @include respond-to("mobile-wide") {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+}

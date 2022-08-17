@@ -1,0 +1,17 @@
+// local font example
+// @include font-face('Carlito', 'carlito.regular', '../fonts/', 'carlito.regular', 400, normal);
+// @include font-face('Carlito', 'carlito.bold', '../fonts/', 'carlito.bold', 700, normal);
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-secondary: Arial, sans-serif;
+$font-weight-primary: 400;
+
+body {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-primary;
+  color: $clBlack;
+}
+
+
+@include respond-to('mobile') {}
+
+@include respond-to('tablet') {}
