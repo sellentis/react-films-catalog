@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import {Routes, Route, Link} from 'react-router-dom'
 import Homepage from "./pages/Homepage";
 import Catalog from "./pages/Catalog";
-import Search from "./pages/Search";
+import Search from "./components/Search";
 
 function App() {
 	return (

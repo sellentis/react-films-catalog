@@ -8,7 +8,10 @@ $font-weight-primary: 400;
 body {
   font-family: $font-family-primary;
   font-weight: $font-weight-primary;
-  color: $clBlack;
+  color: #fff;
+}
+input, textarea {
+  font-family: $font-family-primary;
 }
 
 

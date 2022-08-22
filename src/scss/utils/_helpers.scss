@@ -18,3 +18,24 @@
   margin: 0 auto;
   width: 100%;
 }
+.section {
+  &--padding {
+    padding: 40px 0;
+  }
+}
+.pagination {
+  padding: 40px 0 0;
+  display: flex;
+  justify-content: center;
+  .MuiPaginationItem-root {
+    color: #fff;
+    &.Mui-selected {
+      background: rgba(255,255,255,0.3);
+    }
+  }
+  .MuiButtonBase-root {
+    &:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  }
+}

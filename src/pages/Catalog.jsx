@@ -1,42 +1,44 @@
 import React, {useEffect, useState} from 'react';
 import Filter from "../components/Filter";
 import {motion} from "framer-motion";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 import Movie from "../components/Movie";
+import {useGetFilmsQuery} from "../redux";
 
-const API_KEY = process.env.REACT_APP_FILMS_API
 
 const Catalog = () => {
-
-	const [popular, setPopular] = useState([])
-	const [filtered, setFiltered] = useState([])
-	const [activeGenre, setActiveGenre] = useState(0)
-
-	useEffect(() => {
-		fetchPopular()
-	}, [])
-
-	const fetchPopular = async () => {
-		const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
-		const movies = await data.json()
-		setPopular(movies.results)
-		setFiltered(movies.results)
+	const [page, setPage] = useState(1)
+	const {data = [], isLoading} = useGetFilmsQuery(page)
+	const pageChangeHandler = (event, value) => {
+		setPage(value)
 	}
+	let totalPages = data.total_pages
+	//API restriction only 500 pages
+	if (totalPages > 500) totalPages = 500
+
+	let movies = data.results
 
 	return (
 		<>
-			<section className="catalog">
+			<section className="section--padding catalog">
 				<div className="container">
-					<Filter
-						popular={popular}
-						setFiltered={setFiltered}
-						activeGenre={activeGenre}
-						setActiveGenre={setActiveGenre}
-					/>
-					<motion.div layout className="movies">
-						{filtered.map(movie => {
-							return <Movie key={movie.id} movie={movie}/>
-						})}
-					</motion.div>
+					{isLoading
+						?
+						<CircularProgress />
+						:
+						<>
+							<motion.div layout className="movies">
+								{movies.map(movie => {
+									return <Movie key={movie.id} movie={movie}/>
+								})}
+							</motion.div>
+							<Stack spacing={2}>
+								<Pagination className="pagination" count={totalPages} size="large" onChange={pageChangeHandler}/>
+							</Stack>
+						</>
+					}
 				</div>
 			</section>
 		</>

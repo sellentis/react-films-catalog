@@ -9,11 +9,12 @@
 @import "components/buttons";
 @import "components/header";
 @import "components/footer";
+@import "components/search";
 @import "components/slider";
+@import "components/modal";
 
 @import "pages/main";
 @import "pages/catalog";
-@import "pages/search";
 
 body {
   background: $clMainBlack;

@@ -2,22 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay} from "swiper";
 import 'swiper/scss';
+import {useGetFilmsQuery} from "../redux";
 
-const API_KEY = process.env.REACT_APP_FILMS_API
 
 const MainSlider = () => {
-	const [popular, setPopular] = useState([])
-	const [activeGenre, setActiveGenre] = useState(0)
-
-	useEffect(() => {
-		fetchPopular()
-	}, [])
-
-	const fetchPopular = async () => {
-		const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
-		const movies = await data.json()
-		setPopular(movies.results)
-	}
+	const {data = [], isLoading} = useGetFilmsQuery()
+	let movies = data.results
 	return (
 		<Swiper
 			className="slider"
@@ -31,7 +21,7 @@ const MainSlider = () => {
 			onSlideChange={() => console.log('slide change')}
 			onSwiper={(swiper) => console.log(swiper)}
 		>
-			{popular.map(movie => {
+			{movies?.map(movie => {
 				return <SwiperSlide
 					key={movie.id}
 					className="slider__slide"
