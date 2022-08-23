@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Autoplay} from "swiper";
+import {Autoplay, Navigation, Pagination} from "swiper";
 import 'swiper/scss';
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import {useGetFilmsQuery} from "../redux";
 
 
@@ -14,12 +16,15 @@ const MainSlider = () => {
 			spaceBetween={50}
 			slidesPerView={1}
 			autoplay={{
-				delay: 2500,
+				delay: 5500,
 				disableOnInteraction: false,
 			}}
-			modules={[Autoplay]}
-			onSlideChange={() => console.log('slide change')}
-			onSwiper={(swiper) => console.log(swiper)}
+			pagination={{
+				dynamicBullets: true,
+				clickable: true
+			}}
+			navigation={true}
+			modules={[Autoplay, Pagination, Navigation]}
 		>
 			{movies?.map(movie => {
 				return <SwiperSlide

@@ -19,4 +19,26 @@
       line-height: 24px;
     }
   }
+  .swiper-pagination-bullet {
+    height: 12px;
+    width: 12px;
+    background: $clBlue;
+    border: 1px solid #fff;
+  }
+  .swiper-button-prev {
+    width: 100px;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(36,36,36,1) 0%, rgba(0,21,33,0) 100%);
+  }
+  .swiper-button-next {
+    width: 100px;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(270deg, rgba(36,36,36,1) 0%, rgba(0,21,33,0) 100%);
+  }
 }
