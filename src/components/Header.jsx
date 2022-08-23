@@ -3,18 +3,17 @@ import searchIcon from '../assets/icons/search.svg'
 import userIcon from '../assets/icons/user.svg'
 import {Link, NavLink} from "react-router-dom";
 import Modal from '@mui/material/Modal';
-import Search from "./Search";
 import {useDebounce} from "../hooks/debounce";
 import {useSearchFilmsQuery} from "../redux";
-import CircularProgress from "@mui/material/CircularProgress";
-import {light} from "@mui/material/styles/createPalette";
 
 const Header = () => {
 	const [searchModalVisible, setSearchModalVisible] = useState(false);
 	const [dropdown, setDropdown] = useState(false)
 	const [searchFocused, setSearchFocused] = useState(false)
+	const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
 	const modalOpenHandler = () => setSearchModalVisible(true);
 	const modalCloseHandler = () => setSearchModalVisible(false);
+
 
 	const [keyword, setKeyword] = useState('')
 	const debounced = useDebounce(keyword)
@@ -24,7 +23,6 @@ const Header = () => {
 	})
 	useEffect(() => {
 		setDropdown(debounced.length > 3 && data?.results.length > 0 && searchFocused)
-		console.log(searchFocused)
 	}, [debounced, data, searchFocused])
 	return (
 		<>
@@ -44,12 +42,11 @@ const Header = () => {
 							className="search__input"
 							placeholder="Search film"
 							onFocus={() => setSearchFocused(true)}
-							onBlur={() => setSearchFocused(false)}
 						/>
 						{dropdown && <ul className="search__results">
 							{
 								data?.results.map(movie => (
-									<li className="search__item" key={movie.id}>{movie.title}</li>
+									<li className="search__item" key={movie.id}><NavLink onClick={modalCloseHandler} to={`/catalog/${movie.id}`}>{movie.title}</NavLink></li>
 								))
 							}
 						</ul>}
@@ -60,10 +57,8 @@ const Header = () => {
 			<header className="header">
 				<div className="container">
 					<div className="header__inner">
-						<a href="#" className="header__logo">
-							Filmer
-						</a>
-						<div className="header__menu" id="menu">
+						<NavLink to="/" className="header__logo">Filmer</NavLink>
+						<div className={`header__menu ${mobileMenuVisible && "active"}`} id="menu">
 							<nav className="header__nav">
 								<NavLink className="header__link" to="/">Main</NavLink>
 								<NavLink className="header__link" to="/catalog">Catalog</NavLink>
@@ -77,7 +72,7 @@ const Header = () => {
 								<img src={userIcon} alt="Cabinet"/>
 							</a>
 						</div>
-						<div className="header__burger" id="burger">
+						<div onClick={(e) => setMobileMenuVisible(!mobileMenuVisible)} className={`header__burger ${mobileMenuVisible && "active"}`} id="burger">
 							<span/>
 						</div>
 					</div>

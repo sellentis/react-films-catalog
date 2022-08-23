@@ -31,7 +31,7 @@
     margin-left: 60px;
     @include respond-to("tablet-wide") {
       position: fixed;
-      background: #fff;
+      background: $clBlack;
       top: 0;
       right: -200%;
       bottom: 0;
@@ -42,6 +42,7 @@
       width: 100%;
       z-index: 998;
       margin-left: 0;
+      transition: all 0.3s ease;
       &.active {
         right: 0;
       }
@@ -79,6 +80,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: auto;
   }
 
   &__btn {
@@ -115,7 +117,6 @@
     }
 
     span {
-      position: relative;
       margin-top: 9px;
       margin-bottom: 9px;
       user-select: none;
@@ -126,11 +127,10 @@
       display: block;
       width: 18px;
       height: 2px;
-      background-color: $clBlack;
+      background-color: #fff;
       outline: 1px solid transparent;
       transition-property: background-color, transform;
       transition-duration: 0.3s;
-      border-radius: 3px;
 
       &:before,
       &:after {
@@ -139,7 +139,7 @@
         display: block;
         width: 18px;
         height: 2px;
-        background-color: $clBlack;
+        background-color: #fff;
         outline: 1px solid transparent;
         transition-property: background-color, transform;
         transition-duration: 0.3s;
@@ -160,12 +160,12 @@
         background-color: transparent;
 
         &:before {
-          background-color: $clBlack;
+          background-color: #fff;
           transform: translateY(6px) rotate(45deg);
         }
 
         &:after {
-          background-color: $clBlack;
+          background-color: #fff;
           transform: translateY(-6px) rotate(-45deg);
         }
       }

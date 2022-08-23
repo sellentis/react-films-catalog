@@ -2,7 +2,7 @@ import React from 'react';
 import {motion} from "framer-motion";
 import {Link, NavLink} from "react-router-dom";
 
-const Movie = ({movie}) => {
+const MovieCard = ({movie}) => {
 	return (
 		<motion.div animate={{opacity: 1}} initial={{opacity: 0}} exit={{opacity: 0}} layout className="movies__item">
 			<Link to={`/catalog/${movie.id}`}>
@@ -17,4 +17,4 @@ const Movie = ({movie}) => {
 	);
 };
 
-export default Movie;
+export default MovieCard;

@@ -2,6 +2,15 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
+  @include respond-to("desktop") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include respond-to("tablet") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to("mobile") {
+    grid-template-columns: repeat(1, 1fr);
+  }
   &__item {
     border-radius: 5px;
     cursor: pointer;

@@ -4,7 +4,7 @@ import {motion} from "framer-motion";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
-import Movie from "../components/Movie";
+import MovieCard from "../components/MovieCard";
 import {useGetFilmsQuery} from "../redux";
 
 
@@ -31,7 +31,7 @@ const Catalog = () => {
 						<>
 							<motion.div layout className="movies">
 								{movies.map(movie => {
-									return <Movie key={movie.id} movie={movie}/>
+									return <MovieCard key={movie.id} movie={movie}/>
 								})}
 							</motion.div>
 							<Stack spacing={2}>

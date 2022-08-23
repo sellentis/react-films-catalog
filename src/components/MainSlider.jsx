@@ -5,6 +5,7 @@ import 'swiper/scss';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import {useGetFilmsQuery} from "../redux";
+import {NavLink} from "react-router-dom";
 
 
 const MainSlider = () => {
@@ -33,7 +34,7 @@ const MainSlider = () => {
 					style={{backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`}}
 				>
 					<div className="container">
-						<h2 className="slider__title">{movie.title}</h2>
+						<NavLink to={`/catalog/${movie.id}`} className="slider__title">{movie.title}</NavLink>
 					</div>
 				</SwiperSlide>
 			})}
