@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import searchIcon from '../assets/icons/search.svg'
 import userIcon from '../assets/icons/user.svg'
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useLocation} from "react-router-dom";
 import Modal from '@mui/material/Modal';
 import {useDebounce} from "../hooks/debounce";
 import {useSearchFilmsQuery} from "../redux";
@@ -13,7 +13,7 @@ const Header = () => {
 	const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
 	const modalOpenHandler = () => setSearchModalVisible(true);
 	const modalCloseHandler = () => setSearchModalVisible(false);
-
+	const location = useLocation()
 
 	const [keyword, setKeyword] = useState('')
 	const debounced = useDebounce(keyword)
@@ -21,6 +21,9 @@ const Header = () => {
 	const {data, isLoading} = useSearchFilmsQuery(debounced, {
 		skip: debounced.length < 3,
 	})
+	useEffect(() => {
+		mobileMenuVisible && setMobileMenuVisible(false)
+	}, [location])
 	useEffect(() => {
 		setDropdown(debounced.length > 3 && data?.results.length > 0 && searchFocused)
 	}, [debounced, data, searchFocused])
